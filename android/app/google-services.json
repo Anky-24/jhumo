@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "918959645281",
+    "project_id": "jhumo-radio",
+    "storage_bucket": "jhumo-radio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918959645281:android:13bcdf9f43b0c262c80020",
+        "android_client_info": {
+          "package_name": "com.jhumoradio.jhumo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "918959645281-f8m4bpso61gqp9kscmmdq5nta32rsf8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByEFIhihhO0puI3YdtpjGvDj-fb4AqTek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "918959645281-f8m4bpso61gqp9kscmmdq5nta32rsf8d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "918959645281-8cj0umc9aaj82pk1d1pdh5b3rkc0du46.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jhumoradio.jhumo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
