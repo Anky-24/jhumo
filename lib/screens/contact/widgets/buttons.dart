@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class IcnBtn extends StatelessWidget {
-  final IconData icon;
+  final Widget icon;
   final String label;
   final void Function() onTap;
   const IcnBtn(
@@ -31,7 +31,7 @@ class IcnBtn extends StatelessWidget {
         ),
       ),
       onPressed: onTap,
-      icon: Icon(icon),
+      icon: icon,
       label: Text(label),
     );
   }

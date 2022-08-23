@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jhumo/screens/contact/contact_service.dart';
 import 'package:jhumo/screens/contact/widgets/buttons.dart';
 import 'package:jhumo/utils/constants/colors.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Contact extends StatelessWidget {
   const Contact({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class Contact extends StatelessWidget {
           } else if (snapshot.hasData) {
             final Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
+            print(data);
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -40,7 +42,7 @@ class Contact extends StatelessWidget {
                   height: 40,
                 ),
                 IcnBtn(
-                  icon: Icons.ads_click_outlined,
+                  icon: const FaIcon(FontAwesomeIcons.rectangleAd),
                   label: "Advertise with Us",
                   onTap: () => launchMail(data['mail']),
                 ),
@@ -52,7 +54,7 @@ class Contact extends StatelessWidget {
                   children: [
                     Expanded(
                       child: IcnBtn(
-                        icon: Icons.mobile_friendly_outlined,
+                        icon: const FaIcon(FontAwesomeIcons.instagram),
                         label: "Instagram",
                         onTap: () => launchInBrowser(data['instagram']),
                       ),
@@ -62,7 +64,7 @@ class Contact extends StatelessWidget {
                     ),
                     Expanded(
                       child: IcnBtn(
-                        icon: Icons.facebook,
+                        icon: const FaIcon(FontAwesomeIcons.facebook),
                         label: "Facebook",
                         onTap: () {
                           launchInBrowser(data['facebook']);
@@ -79,7 +81,7 @@ class Contact extends StatelessWidget {
                   children: [
                     Expanded(
                       child: IcnBtn(
-                        icon: Icons.link_rounded,
+                        icon: const FaIcon(FontAwesomeIcons.link),
                         label: "Website",
                         onTap: () {
                           launchInBrowser(data['website']);
@@ -91,9 +93,36 @@ class Contact extends StatelessWidget {
                     ),
                     Expanded(
                       child: IcnBtn(
-                        icon: Icons.call,
+                        icon: const FaIcon(FontAwesomeIcons.phone),
                         label: "Call Us",
                         onTap: () => makePhoneCall(data['phone']),
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      child: IcnBtn(
+                        icon: const FaIcon(FontAwesomeIcons.twitter),
+                        label: "Twitter",
+                        onTap: () {
+                          launchInBrowser(data['twitter']);
+                        },
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: IcnBtn(
+                        icon: const FaIcon(FontAwesomeIcons.linkedin),
+                        label: "LinkedIn",
+                        onTap: () => launchInBrowser(data['linkedin']),
                       ),
                     )
                   ],

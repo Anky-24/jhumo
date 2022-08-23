@@ -27,7 +27,8 @@ Future<void> makePhoneCall(String number) async {
 }
 
 Future<void> launchInBrowser(String site) async {
-  Uri url = Uri(scheme: 'https', host: site);
+  Uri url = Uri.parse(site.contains("https") ? site : "https://" + site);
+  print(url);
   if (!await launchUrl(
     url,
     mode: LaunchMode.externalApplication,

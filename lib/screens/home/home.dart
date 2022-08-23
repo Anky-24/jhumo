@@ -45,22 +45,24 @@ class Home extends StatelessWidget {
         const Spacer(),
         Row(
           children: [
-            Expanded(
-              child: Provider.of<PlayerStateProvider>(context).isPlaying
-                  ? CachedNetworkImage(
-                      imageUrl:
-                          "https://firebasestorage.googleapis.com/v0/b/jhumo-radio.appspot.com/o/dance_animation.gif?alt=media")
-                  : const Text(""),
+            const Expanded(
+              // child: Provider.of<PlayerStateProvider>(context).isPlaying
+              //     ? CachedNetworkImage(
+              //         imageUrl:
+              //             "https://firebasestorage.googleapis.com/v0/b/jhumo-radio.appspot.com/o/dance_animation.gif?alt=media")
+              //     : const Text(""),
+              child: Text(""),
             ),
             PlayOrStop(
               playOrStop: playOrStop,
             ),
-            Expanded(
-              child: Provider.of<PlayerStateProvider>(context).isPlaying
-                  ? CachedNetworkImage(
-                      imageUrl:
-                          "https://firebasestorage.googleapis.com/v0/b/jhumo-radio.appspot.com/o/dance_animation.gif?alt=media")
-                  : const Text(""),
+            const Expanded(
+              // child: Provider.of<PlayerStateProvider>(context).isPlaying
+              //     ? CachedNetworkImage(
+              //         imageUrl:
+              //             "https://firebasestorage.googleapis.com/v0/b/jhumo-radio.appspot.com/o/dance_animation.gif?alt=media")
+              //     : const Text(""),
+              child: Text(""),
             ),
           ],
         ),

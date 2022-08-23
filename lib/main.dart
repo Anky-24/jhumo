@@ -54,6 +54,8 @@ void main() {
   }, (Object error, StackTrace stack) {
     if (error is! PlatformException) {
       if (Platform.isAndroid) {
+        print("byee ");
+        print(error);
         exit(1);
       }
     }
