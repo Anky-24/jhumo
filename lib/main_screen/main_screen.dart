@@ -64,7 +64,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
 
   void playOrStop() {
     if (Provider.of<PlayerStateProvider>(context, listen: false).isPlaying) {
-      Provider.of<PlayerStateProvider>(context, listen: false).softStop();
+      Provider.of<PlayerStateProvider>(context, listen: false).hardStop();
     } else {
       Provider.of<PlayerStateProvider>(context, listen: false).play();
     }

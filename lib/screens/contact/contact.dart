@@ -23,7 +23,6 @@ class Contact extends StatelessWidget {
           } else if (snapshot.hasData) {
             final Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
-            print(data);
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,

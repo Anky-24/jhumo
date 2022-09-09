@@ -32,7 +32,11 @@ class IcnBtn extends StatelessWidget {
       ),
       onPressed: onTap,
       icon: icon,
-      label: Text(label),
+      label: FittedBox(
+        child: Text(
+          label,
+        ),
+      ),
     );
   }
 }
