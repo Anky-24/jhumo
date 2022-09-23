@@ -28,7 +28,7 @@ class Schedule extends StatelessWidget {
             ),
           );
         } else if (snapshot.hasData) {
-          final List<Show> user = snapshot.data!;
+          final List<Show> shows = snapshot.data!;
           return Column(
             children: [
               const SizedBox(
@@ -44,37 +44,52 @@ class Schedule extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Expanded(
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: user.length,
-                    itemBuilder: (context, idx) => Container(
-                          decoration: const BoxDecoration(
-                            color: Colors.black26,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                          ),
-                          margin: const EdgeInsets.only(bottom: 10),
-                          child: GestureDetector(
-                            onTap: () => launchInBrowser(user[idx].rjUrl),
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                backgroundImage: CachedNetworkImageProvider(
-                                    'https://firebasestorage.googleapis.com/v0/b/jhumo-radio.appspot.com/o/rjs%2F${user[idx].rjName.toLowerCase()}.jpg?alt=media'),
-                              ),
-                              title: Text(
-                                "${user[idx].name} with ${user[idx].type.toUpperCase()} ${user[idx].rjName}",
-                                style: Theme.of(context).textTheme.bodyText1,
-                              ),
-                              subtitle: Text(
-                                "${user[idx].days} at ${user[idx].timing}",
-                                style: Theme.of(context).textTheme.bodyText1,
-                              ),
-                            ),
-                          ),
-                        )),
-              ),
+              shows.isEmpty
+                  ? Expanded(
+                      child: Center(
+                        child: Text(
+                          "Coming soon...",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                    )
+                  : Expanded(
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: shows.length,
+                          itemBuilder: (context, idx) => Container(
+                                decoration: const BoxDecoration(
+                                  color: Colors.black26,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(10),
+                                  ),
+                                ),
+                                margin: const EdgeInsets.only(bottom: 10),
+                                child: GestureDetector(
+                                  onTap: () =>
+                                      launchInBrowser(shows[idx].rjUrl),
+                                  child: ListTile(
+                                    leading: CircleAvatar(
+                                      backgroundImage: CachedNetworkImageProvider(
+                                          'https://firebasestorage.googleapis.com/v0/b/jhumo-radio.appspot.com/o/rjs%2F${shows[idx].rjName.toLowerCase()}.jpg?alt=media'),
+                                    ),
+                                    title: Text(
+                                      "${shows[idx].name} with ${shows[idx].type.toUpperCase()} ${shows[idx].rjName}",
+                                      style:
+                                          Theme.of(context).textTheme.bodyText1,
+                                    ),
+                                    subtitle: Text(
+                                      "${shows[idx].days} at ${shows[idx].timing}",
+                                      style:
+                                          Theme.of(context).textTheme.bodyText1,
+                                    ),
+                                  ),
+                                ),
+                              )),
+                    ),
             ],
           );
         } else {

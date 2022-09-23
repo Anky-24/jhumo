@@ -9,9 +9,9 @@ import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> share(BuildContext context) async {
-  ByteData imagebyte = await rootBundle.load(logo);
+  ByteData imagebyte = await rootBundle.load(qr);
   final temp = await getTemporaryDirectory();
-  final path = '${temp.path}/logo.jpg';
+  final path = '${temp.path}/qr.jpeg';
   File(path).writeAsBytesSync(imagebyte.buffer.asUint8List());
   ShareResult res = await Share.shareFilesWithResult([path], text: shareMsg);
   if (res.status != ShareResultStatus.success) {

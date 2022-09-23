@@ -1,8 +1,6 @@
 // ignore_for_file: file_names
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:jhumo/providers/player_state_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:jhumo/utils/constants/constants.dart';
 
 import 'widgets/widgets.dart';
 
@@ -20,6 +18,26 @@ class Home extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.max,
           children: [
+            ActionCenter(
+              icon: Icons.info_outline_rounded,
+              color: Colors.transparent,
+              onTap: () => showDialog(
+                context: context,
+                builder: (_) => const AlertDialog(
+                    title: Text(
+                      "About Us",
+                      style: TextStyle(fontSize: 22),
+                      textAlign: TextAlign.center,
+                    ),
+                    content: SingleChildScrollView(
+                      child: Text(
+                        about,
+                        style: TextStyle(fontSize: 18),
+                        textAlign: TextAlign.justify,
+                      ),
+                    )),
+              ),
+            ),
             const Spacer(
               flex: 1,
             ),
