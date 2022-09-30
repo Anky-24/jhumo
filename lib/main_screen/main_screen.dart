@@ -38,11 +38,11 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance?.addObserver(this);
-    Future.delayed(Duration.zero, () async {
-      //to run async code in initState
-      await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
-      //enables secure mode for app, disables screenshot, screen recording
-    });
+    // Future.delayed(Duration.zero, () async {
+    //   //to run async code in initState
+    //   await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+    //   //enables secure mode for app, disables screenshot, screen recording
+    // });
     Provider.of<ConnectivityProvider>(context, listen: false)
         .initialConnectionCheck(context);
     Provider.of<ConnectivityProvider>(context, listen: false)

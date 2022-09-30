@@ -81,6 +81,7 @@ class PreApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Jhumo Radio',
         theme: JhumoTheme.lightTheme,
         builder: (BuildContext context, Widget? widget) {
@@ -94,7 +95,7 @@ class PreApp extends StatelessWidget {
             splashIconSize: 200,
             duration: 500,
             splash: Image.asset(
-              transparentLogo,
+              splashTransparentLogo,
               fit: BoxFit.contain,
               width: 300,
             ),
