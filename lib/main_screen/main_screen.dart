@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:provider/provider.dart';
 
 import '../local_notification_service.dart';
@@ -11,7 +12,8 @@ import '../providers/providers.dart';
 import '../utils/utils.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  final String whatsAppContact;
+  const MainScreen({Key? key, required this.whatsAppContact}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -23,6 +25,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
     if (state == AppLifecycleState.detached) {
       if (Platform.isAndroid) {
         Provider.of<PlayerStateProvider>(context, listen: false).hardStop();
+        Provider.of<PlayerStateProvider>(context, listen: false).dispose();
       }
     }
     if (state == AppLifecycleState.resumed &&
@@ -35,6 +38,11 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance?.addObserver(this);
+    Future.delayed(Duration.zero, () async {
+      //to run async code in initState
+      await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+      //enables secure mode for app, disables screenshot, screen recording
+    });
     Provider.of<ConnectivityProvider>(context, listen: false)
         .initialConnectionCheck(context);
     Provider.of<ConnectivityProvider>(context, listen: false)
@@ -48,6 +56,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
 
     FirebaseMessaging.onMessage.listen(
       (message) {
+        print("front");
         LocalNotificationService.display(message);
       },
     );
@@ -73,9 +82,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     final List<Widget> screens = [
-      Home(
-        playOrStop: playOrStop,
-      ),
+      Home(playOrStop: playOrStop, whatsAppContact: widget.whatsAppContact),
       Provider.of<NavTabProvider>(context, listen: false)
               .loadedPages
               .contains(1)

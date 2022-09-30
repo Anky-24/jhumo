@@ -16,9 +16,22 @@ class ConnectivityProvider extends ChangeNotifier {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return const AlertDialog(
-            title: Text(internetAleartHeader),
+            backgroundColor: Color(0xfff0dcdd),
+            title: Text(
+              internetAleartHeader,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(0xff87323a),
+              ),
+            ),
             content: SingleChildScrollView(
-              child: Text(internetAleartBody),
+              child: Text(
+                internetAleartBody,
+                style: TextStyle(
+                  color: Color(0xff87323a),
+                ),
+              ),
             ));
       },
     );

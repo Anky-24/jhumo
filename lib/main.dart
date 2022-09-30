@@ -18,6 +18,7 @@ import 'providers/providers.dart';
 import 'firebase_options.dart';
 
 Future<void> backgroundHandler(RemoteMessage message) async {
+  print("bg called");
   Platform.isAndroid
       ? await Firebase.initializeApp()
       : await Firebase.initializeApp(
@@ -34,10 +35,10 @@ void main() {
         : await Firebase.initializeApp(
             options: DefaultFirebaseOptions.currentPlatform,
           );
-
-    FirebaseMessaging.instance.subscribeToTopic("all");
+    await FirebaseMessaging.instance.subscribeToTopic("all");
     FirebaseMessaging.onBackgroundMessage(backgroundHandler);
     LocalNotificationService.initialize();
+
     await JustAudioBackground.init(
       androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
       androidNotificationChannelName: 'Audio playback',
@@ -82,6 +83,12 @@ class PreApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Jhumo Radio',
         theme: JhumoTheme.lightTheme,
+        builder: (BuildContext context, Widget? widget) {
+          ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
+            return const ErrorScreen();
+          };
+          return widget!;
+        },
         home: AnimatedSplashScreen(
             curve: Curves.bounceOut,
             splashIconSize: 200,
@@ -94,16 +101,19 @@ class PreApp extends StatelessWidget {
             nextScreen: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
               future: FirebaseFirestore.instance
                   .collection("base_info")
-                  .doc("radio_stream_url")
+                  .doc("home_info")
                   .get(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return const ErrorScreen();
                 } else if (snapshot.hasData) {
-                  final Map<String, dynamic> radio =
+                  final Map<String, dynamic> homeData =
                       snapshot.data!.data() as Map<String, dynamic>;
-                  context.watch<PlayerStateProvider>().setUrl(radio['value']);
-                  return const MainScreen();
+                  context
+                      .watch<PlayerStateProvider>()
+                      .setUrl(homeData['radio_stream_url']);
+                  return MainScreen(
+                      whatsAppContact: homeData['whatsApp_contact']);
                 } else {
                   return const LoadingScreen();
                 }

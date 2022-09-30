@@ -25,7 +25,7 @@ class Contest extends StatelessWidget {
               height: 10,
             ),
             Text(
-              "Active Contests",
+              "Contests",
               style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   color: Colors.black,
                   fontSize: 24,
@@ -48,6 +48,7 @@ class Contest extends StatelessWidget {
                   )
                 : Expanded(
                     child: ListView.builder(
+                      physics: const AlwaysScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: contests.length,
                       itemBuilder: (context, idx) => FutureBuilder<String>(
@@ -67,7 +68,6 @@ class Contest extends StatelessWidget {
                                       child: CachedNetworkImage(
                                         width:
                                             MediaQuery.of(context).size.width,
-                                        height: 300,
                                         fit: BoxFit.cover,
                                         imageUrl: snapshot.data!,
                                         progressIndicatorBuilder:

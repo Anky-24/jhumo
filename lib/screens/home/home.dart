@@ -8,7 +8,10 @@ import 'home_services.dart';
 
 class Home extends StatelessWidget {
   final void Function() playOrStop;
-  const Home({Key? key, required this.playOrStop}) : super(key: key);
+  final String whatsAppContact;
+  const Home(
+      {Key? key, required this.playOrStop, required this.whatsAppContact})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +27,21 @@ class Home extends StatelessWidget {
               onTap: () => showDialog(
                 context: context,
                 builder: (_) => const AlertDialog(
+                    backgroundColor: Color(0xffd9ebf7),
                     title: Text(
                       "About Us",
-                      style: TextStyle(fontSize: 22),
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w900,
+                        color: Color(0xff34505c),
+                      ),
                       textAlign: TextAlign.center,
                     ),
                     content: SingleChildScrollView(
                       child: Text(
                         about,
-                        style: TextStyle(fontSize: 18),
+                        style:
+                            TextStyle(fontSize: 18, color: Color(0xff34505c)),
                         textAlign: TextAlign.justify,
                       ),
                     )),
@@ -54,13 +63,15 @@ class Home extends StatelessWidget {
             ActionCenter(
               icon: Icons.whatsapp_rounded,
               color: Colors.transparent,
-              onTap: () => launchWhatsapp("919672020169"),
+              onTap: () => launchWhatsapp(whatsAppContact),
             ),
           ],
         ),
         const Spacer(),
         const LogoRecord(),
-        const Spacer(),
+        const Spacer(
+          flex: 1,
+        ),
         Row(
           children: [
             const Expanded(
@@ -84,6 +95,8 @@ class Home extends StatelessWidget {
             ),
           ],
         ),
+        const Spacer(),
+        const AdBaner(),
         const Spacer(),
 
         // Text(
