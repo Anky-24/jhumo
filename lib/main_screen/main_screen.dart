@@ -100,12 +100,12 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
           : Container(),
     ];
 
-    return SafeArea(
-      child: Container(
-        decoration: const BoxDecoration(
-          gradient: bgGradient,
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: bgGradient,
+      ),
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: SafeArea(
         child: Scaffold(
           backgroundColor: bScaffoldL,
           bottomNavigationBar: const BottomBar(),
@@ -116,5 +116,5 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
         ),
       ),
     );
-  }
+  } 
 }
