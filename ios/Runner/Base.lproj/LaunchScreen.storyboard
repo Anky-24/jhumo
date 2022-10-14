@@ -19,15 +19,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
-                                <rect key="frame" x="195" y="422" width="0.33333333333334281" height="0.33333333333331439"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="splash-logo-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
+                                <rect key="frame" x="126" y="320" width="139" height="204"/>
                                 <color key="backgroundColor" red="0.92156863209999995" green="0.5647059083" blue="0.2588235438" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="139" id="SAF-LI-dyA"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.92156863209999995" green="0.5647059083" blue="0.2588235438" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1a2-6s-vTC"/>
-                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4X2-HB-R7a"/>
+                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LDb-wH-VcC"/>
+                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="top" secondItem="Ydg-fD-yQy" secondAttribute="bottom" constant="273" id="iI7-pz-ffG"/>
+                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="sO2-Ro-AVI"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,6 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage" width="0.3333333432674408" height="0.3333333432674408"/>
+        <image name="splash-logo-transparent" width="512" height="512"/>
     </resources>
 </document>
